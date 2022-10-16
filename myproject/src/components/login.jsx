@@ -2,11 +2,15 @@ import React from 'react'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import{Link} from 'react-router-dom'
+import{useEffect} from 'react'
+import LoadingSpinner from './loadingSpinner'
+import './spinner.css'
 
 function Login() {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(true)
 
   const handleLoginAuth =(email, password)=>{
     const getLocalStorageData = localStorage.getItem('signup')
@@ -20,7 +24,30 @@ function Login() {
     e.preventDefault()
     handleLoginAuth(email, password)
   }
-  return (
+
+const handleSpinner = <LoadingSpinner />
+  useEffect(() => {
+    // Loading function to load data or 
+    // fake it using setTimeout;
+    const loadData = async () => {
+
+      // Wait for two second
+      await new Promise((r) => setTimeout(r, 2000));
+
+      // Toggle loading state
+      setLoading((loading) => !loading);
+    };
+      
+    loadData();
+  }, [])
+    
+  // If page is in loading state, display 
+  // loading message. Modify it as per your 
+  // requirement.
+  if (loading) {
+      return handleSpinner
+  } else {
+    return (
     <div className='loginDiv'>
       <form className='loginForm' onSubmit={handleLogin}>
         <div>
@@ -48,6 +75,7 @@ function Login() {
       </form>
     </div>
   )
+  }
 }
 
 export default Login
