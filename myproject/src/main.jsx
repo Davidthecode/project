@@ -11,6 +11,10 @@ import Home from './components/home';
 import Login from './components/login';
 import Signup from './components/signup';
 import ErrorPage from './components/errorPage';
+import Profile from './components/profile';
+import About from './components/about'
+import Edit from './components/edit'
+import Settings from './components/settings'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +25,24 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+    children: [
+      {
+        path: "/home/profile",
+        element: <Profile />
+      },
+      {
+        path: "/home/about",
+        element: <About />
+      },
+      {
+        path: "/home/edit",
+        element: <Edit />
+      },
+      {
+        path: "/home/settings",
+        element: <Settings />
+      }
+    ]
   },
   {
     path: "/login",

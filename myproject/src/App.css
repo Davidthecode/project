@@ -13,7 +13,7 @@
      margin-top: 10rem;
 }
 
-input{
+.field input{
     width: 70%;
     height: 2rem;
     margin-top: 1rem;
@@ -38,4 +38,24 @@ button{
     .errorPage{
         margin-top: 80%;
     }
+}
+.home{
+    margin-left: 1.5rem;
+}
+.holdContent{
+    display: flex;
+    height: 90vh;
+    justify-content: space-around;
+}
+.content1{
+    border: 1px solid black;
+    width: 10%;
+    text-align: center;
+}
+a:Link{
+    text-decoration: none;
+}
+.content2{
+    border: 1px solid black;
+    width: 80%;
 }
